@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Argo Finance Yatırım Platformu</title>
+  <style>
+    /* Temel Tema ve Stil */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0D1B2A; /* koyu mavi */
+      color: white;
+    }
+    header {
+      background-color: #1B263B;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #415A77;
+    }
+    main {
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2, h3 {
+      color: #E0E0E0;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    input {
+      color: black;
+    }
+    button {
+      background-color: #415A77;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1B263B;
+    }
+    footer {
+      background-color: #1B263B;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    .forms-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .form-box {
+      flex: 1;
+      min-width: 250px;
+      background-color: #1B263B;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      border: none;
+    }
+    .ticker {
+      background-color: #415A77;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker span {
+      display: inline-block;
+      padding-right: 50px;
+      animation: scroll 15s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Argo Finance</h1>
+    <nav>
+      <a href="#home">Anasayfa</a>
+      <a href="#register">Kayıt Ol</a>
+      <a href="#login">Giriş Yap</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main id="home">
+
+    <section>
+      <h2>Argo Finance Yatırım Platformuna Hoşgeldiniz</h2>
+      <p>Ufuk Kaplan liderliğinde yatırımcılarımıza özel çözümler sunuyoruz. Argo Finance ile yatırım dünyasına adım atın!</p>
+    </section>
+
+    <!-- Video Tanıtım -->
+    <section>
+      <h3>Tanıtım Videosu</h3>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </section>
+
+    <!-- Canlı Piyasa Ticker -->
+    <section class="ticker">
+      <span>BTC: 45,000$ | ETH: 3,200$ | EUR/USD: 1.10 | Altın: 1,950$ | Hisse XYZ: 120 TL</span>
+    </section>
+
+    <!-- Kayıt ve Giriş Formları -->
+    <section class="forms-container">
+      <!-- Kayıt Formu -->
+      <div class="form-box" id="register">
+        <h3>Kayıt Ol</h3>
+        <input type="text" placeholder="Ad" id="firstName">
+        <input type="text" placeholder="Soyad" id="lastName">
+        <input type="text" placeholder="TC Kimlik" id="tc">
+        <input type="date" placeholder="Doğum Tarihi" id="birthDate">
+        <input type="email" placeholder="E-posta" id="email">
+        <input type="password" placeholder="Şifre" id="password">
+        <input type="tel" placeholder="Telefon" id="phone">
+        <button onclick="registerUser()">Kayıt Ol</button>
+      </div>
+
+      <!-- Giriş Formu -->
+      <div class="form-box" id="login">
+        <h3>Giriş Yap</h3>
+        <input type="text" placeholder="Kullanıcı Adı" id="loginUsername">
+        <input type="password" placeholder="Şifre" id="loginPassword">
+        <button onclick="loginUser()">Giriş Yap</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Argo Finance | Sahibi: Ufuk Kaplan</p>
+    <p>Sponsorlar: XYZ Bank, ABC Teknoloji</p>
+    <p>Altyapı: HTML, CSS, JavaScript</p>
+  </footer>
+
+  <script>
+    // Kayıt İşlevi (Sahte, localStorage)
+    function registerUser() {
+      const user = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        tc: document.getElementById('tc').value,
+        birthDate: document.getElementById('birthDate').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        phone: document.getElementById('phone').value
+      };
+      localStorage.setItem(user.email, JSON.stringify(user));
+      alert('Kayıt tamamlandı!');
+    }
+
+    // Giriş İşlevi (Sahte, localStorage)
+    function loginUser() {
+      const email = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      const user = JSON.parse(localStorage.getItem(email));
+      if(user && user.password === password) {
+        alert(`Hoşgeldiniz, ${user.firstName} ${user.lastName}!`);
+      } else {
+        alert('Kullanıcı adı veya şifre yanlış.');
+      }
+    }
+  </script>
+
+</body>
+</html>
